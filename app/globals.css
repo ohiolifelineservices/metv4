@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 248 36% 15%;
+  --card-foreground: 0 0% 100%;
+  --popover: 248 36% 15%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 262 100% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 248 36% 15%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 248 20% 20%;
+  --muted-foreground: 240 2% 44%;
+  --accent: 120 100% 39%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 2% 30%;
+  --input: 248 30% 18%;
+  --ring: 262 100% 65%;
+  --radius: 1rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: auto;
+  background-color: #000000;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-manrope), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background-color: #964DFF;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #212145;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #964DFF;
+}
+
+/* Film grain overlay for depth */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+  will-change: background-position;
+}
+
+@media (max-width: 767px) {
+  .grain-overlay {
+    opacity: 0.018;
+    animation: none;
+  }
+
+  .bloom {
+    filter: blur(72px);
+  }
+
+  .glass-panel,
+  .glass-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay,
+  .marquee-track {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.text-gradient-purple {
+  background: linear-gradient(96deg, #ffffff 0%, #c9a4ff 45%, #964DFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding-bottom: 0.06em;
+}
+
+.text-gradient-green {
+  background: linear-gradient(96deg, #ffffff 0%, #8bff8b 40%, #00C800 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding-bottom: 0.04em;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.22);
+  color: transparent;
+}
+
+/* Glass surfaces */
+.glass-panel {
+  background: rgba(33, 33, 69, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(150, 77, 255, 0.18);
+}
+
+.glass-card {
+  background: linear-gradient(160deg, rgba(33, 33, 69, 0.72) 0%, rgba(0, 0, 0, 0.6) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-hover {
+  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.glass-card-hover:hover {
+  border-color: rgba(150, 77, 255, 0.55);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px -28px rgba(150, 77, 255, 0.55);
+}
+
+/* Ambient light blooms */
+.bloom {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: -1;
+}
+.bloom-purple {
+  background: rgba(150, 77, 255, 0.32);
+}
+.bloom-green {
+  background: rgba(0, 200, 0, 0.16);
+}
+.bloom-teal {
+  background: rgba(0, 168, 156, 0.2);
+}
+
+/* Technical grid backdrop */
+.tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+}
+
+.hairline-top {
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, rgba(150, 77, 255, 0.45), rgba(0, 168, 156, 0.25), transparent) 1;
+}
+
+.mask-fade-bottom {
+  mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+/* Shine sweep on primary buttons */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.28) 50%, transparent 80%);
+  transform: translateX(-120%);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* Editorial prose used on long-form keyword content */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: 720px;
+}
+
+.prose-mc p {
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.85;
+  margin-bottom: 1.15rem;
+  font-size: 0.975rem;
+}
+.prose-mc h3 {
+  color: #ffffff;
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose-mc strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+.prose-mc ul {
+  margin-bottom: 1.25rem;
+  padding-left: 0;
+  list-style: none;
+}
+.prose-mc li {
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.8;
+  padding-left: 1.35rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.prose-mc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #00C800;
+}
+.prose-mc a {
+  color: #c9a4ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-mc a:hover {
+  color: #ffffff;
+}
