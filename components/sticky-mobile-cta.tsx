@@ -20,7 +20,7 @@ export function StickyMobileCTA() {
       <button
         onClick={() => openOrderForm(plan)}
         data-testid="sticky-cta-order-now"
-        className="flex-1 text-center bg-mc-purple text-white text-sm font-display font-bold py-3 rounded-full"
+        className="flex-1 text-center bg-mc-green text-black text-sm font-display font-bold py-3 rounded-full hover:bg-mc-green/90 transition-colors"
       >
         Order Now
       </button>

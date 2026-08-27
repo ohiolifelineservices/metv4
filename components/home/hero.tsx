@@ -30,7 +30,7 @@ export function Hero() {
 
       <div className="bloom bloom-purple w-[560px] h-[560px] -top-48 -left-40 opacity-60" aria-hidden="true" />
 
-      <div className="container relative z-10 py-16 lg:py-20">
+      <div className="container relative z-10 py-10 sm:py-12 lg:py-20">
         <div className="max-w-2xl">
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <PromoBadge />
