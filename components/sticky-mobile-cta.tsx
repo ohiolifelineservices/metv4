@@ -1,12 +1,10 @@
 "use client"
 
 import { useOrderForm } from "@/components/order-form-context"
-import { getPopularPlan } from "@/lib/commercial-data"
 import Link from "next/link"
 
 export function StickyMobileCTA() {
   const { openOrderForm } = useOrderForm()
-  const plan = getPopularPlan()
 
   return (
     <div
@@ -18,9 +16,9 @@ export function StickyMobileCTA() {
         View Plans
       </Link>
       <button
-        onClick={() => openOrderForm(plan)}
+        onClick={() => openOrderForm()}
         data-testid="sticky-cta-order-now"
-        className="flex-1 text-center bg-mc-purple text-white text-sm font-display font-bold py-3 rounded-full"
+        className="flex-1 text-center bg-mc-green text-black text-sm font-display font-bold py-3 rounded-full hover:bg-mc-green/90 transition-colors"
       >
         Order Now
       </button>

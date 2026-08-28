@@ -18,7 +18,7 @@ import { faqSchema } from "@/lib/schema-data"
 import { HOME_FAQS } from "@/lib/home-faqs"
 
 export const metadata: Metadata = staticPageMetadata(
-  "Metronet Internet | Plans from $60 | FREE Month",
+  "Order Metronet | Metronet Internet Plans from $60 | FREE Month",
   "Shop Metronet internet plans from $60/mo with speeds up to 2 Gig. Get your first month FREE and a WiFi router included. Order new service online today.",
   "/",
 )

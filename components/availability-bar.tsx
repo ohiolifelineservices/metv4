@@ -12,7 +12,7 @@ export function AvailabilityBar() {
   if (pathname !== "/") return null
 
   return (
-    <div className="sticky top-[74px] z-40 border-b border-white/10 bg-black/85 backdrop-blur-xl" data-testid="availability-bar">
+    <div className="hidden sm:block sticky top-[74px] z-40 border-b border-white/10 bg-background/95 backdrop-blur-xl" data-testid="availability-bar">
       <div className="container py-2.5">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_440px_minmax(0,1fr)] lg:gap-4">
           <div className="flex items-center gap-2 shrink-0 lg:justify-self-end">

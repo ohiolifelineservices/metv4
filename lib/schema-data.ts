@@ -5,7 +5,7 @@ import { PLANS } from "./commercial-data"
 
 const METROCONET_ORGANIZATION = {
   "@type": "Organization",
-  name: "Metroconet",
+  name: "Order Metronet",
   url: "https://metroconet.com",
   description: "Independent authorized retailer for new Metronet service.",
 }
@@ -77,7 +77,7 @@ export const organizationSchema = {
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Metroconet",
+  name: "Order Metronet",
   url: "https://metroconet.com",
   publisher: METROCONET_ORGANIZATION,
   description: "Independent authorized retailer for new Metronet service.",

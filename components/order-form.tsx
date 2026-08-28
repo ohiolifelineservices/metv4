@@ -106,31 +106,6 @@ export default function OrderForm({ isOpen, onClose, selectedPlan }: OrderFormPr
     }
   }, [isOpen])
 
-  // Keep the modal matched to the *visible* viewport on phones. Android/iOS
-  // keyboards can shrink the usable area without behaving like a normal desktop
-  // viewport resize, so visualViewport is the most reliable source here.
-  useEffect(() => {
-    if (!isOpen || !window.visualViewport) return
-
-    const root = document.documentElement
-    const viewport = window.visualViewport
-    const syncVisualViewport = () => {
-      root.style.setProperty("--order-vv-height", `${viewport.height}px`)
-      root.style.setProperty("--order-vv-offset", `${viewport.offsetTop}px`)
-    }
-
-    syncVisualViewport()
-    viewport.addEventListener("resize", syncVisualViewport)
-    viewport.addEventListener("scroll", syncVisualViewport)
-
-    return () => {
-      viewport.removeEventListener("resize", syncVisualViewport)
-      viewport.removeEventListener("scroll", syncVisualViewport)
-      root.style.removeProperty("--order-vv-height")
-      root.style.removeProperty("--order-vv-offset")
-    }
-  }, [isOpen])
-
   const bringControlIntoView = useCallback((control: HTMLElement, smooth = true) => {
     const modal = document.querySelector<HTMLElement>('[data-testid="order-form-modal"]')
     if (!modal || !modal.contains(control)) return
@@ -270,7 +245,7 @@ export default function OrderForm({ isOpen, onClose, selectedPlan }: OrderFormPr
         data-lenis-prevent
         data-lenis-prevent-wheel
         data-lenis-prevent-touch
-        className="sm:max-w-[620px] bg-[#0b0b16] border-white/12 text-white top-[calc(var(--order-vv-offset,0px)+0.5rem)] translate-y-0 h-[calc(var(--order-vv-height,100dvh)-1rem)] max-h-none sm:top-[50%] sm:translate-y-[-50%] sm:h-auto sm:max-h-[90vh] overflow-y-auto overscroll-contain touch-pan-y rounded-[22px] sm:rounded-[26px] p-4 sm:p-6 gap-3 sm:gap-4"
+        className="sm:max-w-[620px] bg-[#0b0b16] border-white/12 text-white top-[50%] translate-y-[-50%] h-auto max-h-[calc(100dvh-1rem)] overflow-y-auto overscroll-contain touch-pan-y rounded-[22px] sm:rounded-[26px] p-4 sm:p-6 gap-3 sm:gap-4"
       >
         <DialogHeader>
           <Image src={BRAND.resellerLogo} alt="Metronet Authorized Reseller" width={150} height={50} className="h-7 w-auto mx-auto mb-2" />
