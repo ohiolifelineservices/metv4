@@ -5,7 +5,7 @@ import { PLANS } from "./commercial-data"
 
 const METROCONET_ORGANIZATION = {
   "@type": "Organization",
-  name: "Order Metronet",
+  name: "Metroconet",
   url: "https://metroconet.com",
   description: "Independent authorized retailer for new Metronet service.",
 }
