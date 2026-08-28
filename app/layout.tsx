@@ -16,7 +16,8 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", weight
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://metroconet.com"),
-  title: "Metronet Internet | Plans from $60 | FREE Month",
+  title: "Order Metronet | Metronet Internet Plans from $60 | FREE Month",
+  applicationName: "Order Metronet",
   description:
     "Shop Metronet internet plans from $60/mo with speeds up to 2 Gig. Get your first month FREE and a WiFi router included. Order new service online today.",
   robots: { index: true, follow: true },
